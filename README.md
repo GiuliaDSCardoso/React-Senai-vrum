@@ -1,11 +1,2 @@
-This project was created to practice react, so its a website where users can manage your routine, create tasks, and organize your day.
-
-What technology was used?
-
-- react
-- vite
-- lucide-react
-- react router dom
-
-
-- localStorage property (Para gerar um armazenamento interno do site)
+npm install  -C tailwindcss@3.4.10 postcss@8.4.41 autoprefixer@10.4.20
+ npm install lucide-react@0.435.0     

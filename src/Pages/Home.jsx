@@ -10,34 +10,42 @@ export default function Home() {
             {/* Navigation Bar */}
              <Nav />
              {/* Header Section */}
-             <header className="flex flex-col gap-3 items-center justify-center mt-[10%]  h-[20vh] ">
+             <header className="flex flex-col gap-3 items-center justify-center   h-[30vh] ">
                 <TextTitle>BEM VINDO(a)</TextTitle>
-                <h2 className="text-xl text-center md:text-2xl">
+                <h2 className="hidden md:flex text-center md:text-2xl">
                     Aqui você pode solicitar veículos e realizar devoluções!
+                </h2>
+                <h2 className=" md:hidden text-center text-xl md:text-2xl">
+                    Aqui você pode solicitar veículos <br/> e realizar devoluções!
                 </h2>
              </header>
              {/* Main Content Area */}
-             <div className="md:flex-row flex-col flex md:justify-center items-center gap-6">
-                <Cards>
-                    <FileTextIcon className="w-12 h-12 text-[#0055dd71]"/>
-                    <h3 className="text-2xl text-[#0055dd71] font-bold"> Minhas Solicitações</h3>
-                </Cards>
-                <Cards>
-                    <CarFrontIcon className="w-12 h-12 text-[#0055dd71]"/>
-                    <h3 className="text-2xl text-[#0055dd71] font-bold"> Minhas Solicitações</h3>
-                </Cards>
-                <Cards>
-                    <img src="../public/ViagensProgramadas.svg"  className="w-12 h-12 text-[#0055dd71]"/>
-                    <h3 className="text-2xl text-[#0055dd71] font-bold"> Minhas Solicitações</h3>
-                </Cards>
-                <Cards>
-                    <FuelIcon className="w-12 h-12 text-[#0055dd71]"/>
-                    <h3 className="text-2xl text-[#0055dd71] font-bold"> Minhas Solicitações</h3>
-                </Cards>
+             <div className="flex-row  md:px-4  justify-center flex md:justify-center items-center gap-2">
+                <div className="flex flex-col gap-4 md:flex-row">
+                    <Cards
+                        item={<FileTextIcon className="md:w-12 md:h-12 w-8 h-8 text-[#0055dd71]" />}
+                        texto="Minhas Solicitações"
+                        />
+
+                    <Cards
+                        item = {<CarFrontIcon className="md:w-12 md:h-12 w-8 h-8 text-[#0055dd71]"/>}
+                        texto="Minhas Solicitações"
+                    />
+                </div>
+                <div className="flex flex-col gap-4 md:flex-row">
+                    <Cards
+                        item = {<img src="../public/ViagensProgramadas.svg"  className="md:w-12 md:h-12 w-8 h-8 text-[#0055dd71]"/>}
+                        texto ="Minhas Solicitações"
+                    />
+                    <Cards
+                        item = {<FuelIcon className="md:w-12 md:h-12 w-8 h-8 text-[#0055dd71]"/>}
+                        texto = " Minhas Solicitações"
+                    />
+                </div>
              </div>
              
         </Body>
-           
+    
         
     )
 }
