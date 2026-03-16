@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { CloudMoon, CloudSun } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuLateral() {
   const [open, setOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function MenuLateral() {
 
   const menuButtonMobileRef = useRef(null);
   const menuButtonDesktopRef = useRef(null);
+  const navigate = useNavigate();
 
   // ===============================
   // FECHAR AO CLICAR FORA
@@ -112,10 +114,10 @@ export default function MenuLateral() {
           }}
         >
           <div className="flex flex-col gap-4">
-            <MenuItem icon="/iconHome.svg" label="Home" open />
-            <MenuItem icon="/iconConfig.png" label="Configurações" open />
-            <MenuItem icon="/iconSup.png" label="Suporte" open />
-            <MenuItem icon="/Perfil.png" label="Perfil" open />
+            <MenuItem icon="/iconHome.svg" onClick={() => navigate("/")} label="Home" open />
+            <MenuItem icon="/iconConfig.png" onClick={() => navigate("#")} label="Configurações" open />
+            <MenuItem icon="/iconSup.png" onClick={() => navigate("#")} label="Suporte" open />
+            <MenuItem icon="/Perfil.png" onClick={() => navigate("#")} label="Perfil" open />
 
             <MenuItem
               icon={darkMode ? <CloudSun /> : <CloudMoon />}
@@ -130,17 +132,17 @@ export default function MenuLateral() {
       {/* ================= DESKTOP SIDEBAR ================= */}
       <aside
         ref={menuDesktopRef}
-        className={`hidden md:flex fixed top-0 left-0 h-screen flex-col justify-between
-        overflow-hidden
+        className={`hidden md:flex fixed top- pt-6 left-0 h-screen flex-col justify-between
+        z-[999]
         transition-[width] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-        ${open ? "w-64" : "w-16"}`}
+        ${open ? "w-56" : "w-16"}`}
         style={{
           backgroundColor: darkMode ? "#001028" : "#D9E5FA",
         }}
       >
         <div>
           {/* HEADER */}
-          <div className="flex items-center p-4 h-20">
+          <div className="flex items-center pl-5 h-20">
             <button
               ref={menuButtonDesktopRef}
               onClick={() => setOpen(!open)}
@@ -154,16 +156,16 @@ export default function MenuLateral() {
             {open && (
               <img
                 src="/LogoSenaiAzul.png"
-                className="h-10 dark:brightness-200"
+                className="h-8 dark:brightness-200"
               />
             )}
           </div>
 
           {/* LINKS */}
           <nav className="mt-10 flex flex-col gap-6 px-2">
-            <MenuItem icon="/iconHome.svg" label="Home" open={open} />
-            <MenuItem icon="/iconConfig.png" label="Configurações" open={open} />
-            <MenuItem icon="/iconSup.png" label="Suporte" open={open} />
+            <MenuItem icon="/iconHome.svg" onClick={() => navigate("/")}  label="Home" open={open} />
+            <MenuItem icon="/iconConfig.png" onClick={() => navigate("#")} label="Configurações" open={open} />
+            <MenuItem icon="/iconSup.png" onClick={() => navigate("#")} label="Suporte" open={open} />
           </nav>
         </div>
 
@@ -176,30 +178,57 @@ export default function MenuLateral() {
             onClick={() => setDarkMode(!darkMode)}
           />
 
+          <div className="relative">
           <button
             onClick={() => setOpenPerfil(!openPerfil)}
-            className="flex items-center gap-2"
+            className="flex items-center px-2 gap-2 text-[#003FC3] dark:text-[#007AF8]"
           >
             <img src="/Perfil.png" className="w-8" />
-            {open && <span>{nome}</span>}
+            {open && (
+              <span className="text-[#003FC3] font-semibold dark:text-[#007AF8]">
+                {nome}
+              </span>
+            )}
           </button>
 
           {openPerfil && (
-            <div
-              ref={perfilRef}
-              className="bg-white dark:bg-[#020617] shadow-lg border dark:border-gray-700 flex flex-col"
-            >
-              <a className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800">
-                Perfil
-              </a>
-              <a className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800">
-                Configurações
-              </a>
-              <a className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800">
-                Sair
-              </a>
-            </div>
-          )}
+              <div
+                ref={perfilRef}
+                className="
+                absolute text-center left-[90%] top-1/2 -translate-y-1/2 ml-3
+                bg-white dark:text-white dark:bg-[#0b195e]
+                shadow-lg  px-2 py-2
+                rounded-md flex flex-col min-w-[150px] z-50
+                "
+              >
+
+                {/* TRIÂNGULO */}
+                <div
+                  className="
+                  absolute -left-2 top-1/2 -translate-y-1/2
+                  w-0 h-0
+                  border-t-8 border-t-transparent
+                  border-b-8 border-b-transparent
+                  border-r-8 border-r-white
+                  dark:border-r-[#09154e]
+                  "
+                />
+
+                <a href="#" className="p-2 hover:bg-blue-50 rounded-sm dark:hover:bg-[#040b2e]">
+                  Perfil
+                </a>
+
+                <a href="#" className="p-2 hover:bg-blue-50 rounded-sm dark:hover:bg-[#040b2e]">
+                  Configurações
+                </a>
+
+                <a href="#" className="p-2 hover:bg-blue-50 rounded-sm dark:hover:bg-[#040b2e]">
+                  Sair
+                </a>
+
+              </div>
+            )}
+        </div>
         </div>
       </aside>
     </>
@@ -214,21 +243,25 @@ function MenuItem({ icon, label, open, onClick }) {
       border-none outline-none focus:ring-0
       text-blue-900 hover:bg-blue-200/70 dark:hover:bg-[#000b1b]"
     >
-      <div className="w-6 h-6 min-w-[24px] flex items-center justify-center dark:brightness-200">
+      <div className="w-6 h-6 min-w-[24px] flex items-center justify-center dark:brightness-150">
         {typeof icon === "string" ? (
-          <img src={icon} className="w-full h-full" alt="" />
+          <img src={icon} className="w-full h-full " alt="" />
         ) : (
           icon
         )}
       </div>
 
       <span
-        className={`font-semibold text-[#003FC3] dark:text-[#007AF8]
-        whitespace-nowrap transition-all duration-300
-        ${open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}
-      >
-        {label}
-      </span>
+      className={`font-semibold text-[#003FC3] dark:text-[#007AF8]
+      whitespace-nowrap overflow-hidden
+      transition-all duration-300 ease-in-out
+      ${open 
+        ? "opacity-100 max-w-[200px] ml-0" 
+        : "opacity-0 max-w-0 ml-[-8px]"
+      }`}
+    >
+      {label}
+    </span>
     </button>
   );
 }

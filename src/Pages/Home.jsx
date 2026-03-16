@@ -3,7 +3,7 @@ import Body from "../assets/styles/Body";
 import Cards from "../assets/styles/Cards";
 
 import Header from "../assets/styles/Header";
-import MenuLateral from "../assets/styles/MenuLateral";
+
 
 
 export default function Home() {
@@ -29,12 +29,12 @@ export default function Home() {
 
   return (
     <Body>
-      <MenuLateral />
+      
       <Header/>
       
 
       <div className="flex-row md:px-10 md:mx-6 items-center justify-center flex md:justify-center gap-4">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <Cards
             href="/solicitarViagem"
             item={<img className="max-w-full max-h-full" src="/iconOrdem.png" />}
@@ -42,18 +42,21 @@ export default function Home() {
           />
 
           <Cards
+            href="#"
             item={<img className="max-w-full max-h-full" src="/iconCarro.png" />}
             texto={<>Solicitar <br /> Viagens</>}
           />
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <Cards
+            href="#"
             item={<img className="max-w-full max-h-full" src="/iconViagem.png" />}
             texto="Viagens Programadas"
           />
 
           <Cards
+            href="#"
             item={<img className="max-w-full max-h-full" src="/iconGasolina.png" />}
             texto="Senha de abastecimento"
           />
