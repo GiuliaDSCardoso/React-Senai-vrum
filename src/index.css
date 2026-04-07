@@ -2,13 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  color: #0E4194;
-}
+
 body {
     font-family: 'Asap', sans-serif;
     background-color: #f6fbff;
-    @apply text-textColor;
+   
     
     height: 100vh;
 }

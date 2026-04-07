@@ -4,9 +4,7 @@ import Cards from "../assets/styles/Cards";
 
 import Header from "../assets/styles/Header";
 
-
-
-export default function Home() {
+export default function HomeUser() {
   useEffect(() => {
     const handleWheel = (e) => {
       if (e.ctrlKey) e.preventDefault();
@@ -29,35 +27,43 @@ export default function Home() {
 
   return (
     <Body>
+      <Header />
       
-      <Header/>
       
 
       <div className="flex-row md:px-10 md:mx-6 items-center justify-center flex md:justify-center gap-4">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col  gap-4">
           <Cards
             href="/solicitarViagem"
-            item={<img className="max-w-full max-h-full" src="/iconOrdem.png" />}
-            texto={<>Minhas <br /> Solicitações</>}
+            item={
+              <img className="max-w-full max-h-full" src="/iconOrdem.png" />
+            }
+            texto={<>Minhas Solicitações</>}
           />
 
           <Cards
             href="#"
-            item={<img className="max-w-full max-h-full" src="/iconCarro.png" />}
-            texto={<>Solicitar <br /> Viagens</>}
+            item={
+              <img className="max-w-full max-h-full" src="/iconCarro.png" />
+            }
+            texto={<>Solicitar Viagens</>}
           />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-4">
           <Cards
             href="#"
-            item={<img className="max-w-full max-h-full" src="/iconViagem.png" />}
+            item={
+              <img className="max-w-full max-h-full" src="/iconViagem.png" />
+            }
             texto="Viagens Programadas"
           />
 
           <Cards
             href="#"
-            item={<img className="max-w-full max-h-full" src="/iconGasolina.png" />}
+            item={
+              <img className="max-w-full max-h-full" src="/iconGasolina.png" />
+            }
             texto="Senha de abastecimento"
           />
         </div>
