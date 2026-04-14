@@ -4,7 +4,7 @@ export default function InputLogin({ text, type, placeholder, dica }) {
             <label className="text-white/85 w-full text-sm mb-1 block">{text}</label>
             <input 
                 type={type} 
-                className="w-full p-3  rounded-lg bg-[#ffffff07] border-[3px] border-[#ffffff07] focus:border-[#ffffff0f] focus:bg-[#ffffff0f] transition-colors duration-300 text-white outline-none"
+                className="w-full p-2  rounded-lg bg-[#ffffff07] border-[3px] border-[#ffffff07] focus:border-[#ffffff0f] focus:bg-[#ffffff0f] transition-colors duration-300 text-white outline-none"
                 placeholder={placeholder}
             />  
             <div className="flex  gap-2">

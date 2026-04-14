@@ -30,7 +30,7 @@ export default function Home() {
     <Body>
       <Header />
       <div className="flex flex-col px-6">
-        <h1 className="text-black border-l-2 text-xl border-black/60 pl-4">Notícias</h1>
+        <h1 className="text-black border-l-2 text-md border-black/60 pl-4">Notícias</h1>
         <Banner/>
       </div>
       

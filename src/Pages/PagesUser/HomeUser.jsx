@@ -1,8 +1,11 @@
 import { useEffect } from "react";
-import Body from "../assets/styles/Body";
-import Cards from "../assets/styles/Cards";
 
-import Header from "../assets/styles/Header";
+
+
+
+import Body from "../../assets/styles/user/Body";
+import Cards from "../../assets/styles/Cards";
+import Header from "../../assets/styles/Header";
 
 export default function HomeUser() {
   useEffect(() => {
